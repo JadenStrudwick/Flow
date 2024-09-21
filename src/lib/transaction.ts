@@ -37,7 +37,6 @@ export const isTransactionApplicable = (transaction: Transaction, givenDate: Dat
     case 'WEEK':
       return daysDiff % (interval * 7) === 0;
     case 'MONTH': // NOT SURE
-      // if (daysDiff % 30 !== 0) return false;
       const monthsDiff = (givenDate.getFullYear() - baseDate.getFullYear()) * 12 + givenDate.getMonth() - baseDate.getMonth();
       return monthsDiff % interval === 0 && baseDate.getDate() === givenDate.getDate();
     case 'YEAR':
@@ -57,9 +56,12 @@ export const getEstimatedCashflowForDateRange = (transactions: Transaction[], en
     const baseDate = new Date(t.baseDate);
     return earliest ? (baseDate < earliest ? baseDate : earliest) : baseDate;
   }, undefined);
-  if (!earliestTransactionDate) return cashflow;
 
-  let currentDate = new Date(earliestTransactionDate);
+  if (!earliestTransactionDate) {
+    return cashflow;
+  }
+
+  let currentDate = earliestTransactionDate < new Date() ? earliestTransactionDate : new Date();
   let currentBalance = 0;
 
   while (currentDate <= endDate) {
