@@ -31,7 +31,7 @@ export function AddTransactionDialog(props: AddTransactionDialogProps) {
         <DialogHeader>
           <DialogTitle>Add Transaction</DialogTitle>
           <DialogDescription>
-            {`Add a new transaction here. Click save when you're done.`}
+            {`Add a new transaction here. Click submit when you're done.`}
           </DialogDescription>
         </DialogHeader>
         <TransactionForm updateData={props.updateData} setDialogOpen={setDialogOpen} />
