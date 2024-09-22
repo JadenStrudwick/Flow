@@ -27,7 +27,7 @@ export function AddTransactionDialog(props: AddTransactionDialogProps) {
       <DialogTrigger asChild>
         <Button variant="outline">Add Transaction</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="h-[100vh] sm:max-h-[calc(100vh-4rem)] w-[100vw] sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add Transaction</DialogTitle>
           <DialogDescription>
